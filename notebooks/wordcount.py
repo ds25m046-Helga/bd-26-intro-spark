@@ -3,7 +3,7 @@
 from mrjob.job import MRJob # import the mrjob library
 
 class MRSongCount(MRJob):
-    
+
     # the map step: each line in the txt file is read as a key, value pair
     # in this case, each line in the txt file only contains a value but no key
     # _ means that in this case, there is no key for each line
@@ -16,6 +16,6 @@ class MRSongCount(MRJob):
     # then sum all the values of the tuple, which will give the total song plays
     def reducer(self, key, values):
         yield (key, sum(values))
-        
+
 if __name__ == "__main__":
     MRSongCount.run()
